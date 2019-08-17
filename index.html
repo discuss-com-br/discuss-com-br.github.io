@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="slack-app-id" content="AK2R1R4BF">
+  <meta name="description" content="Keyword monitoring app. Get notified when someone on Hacker News, Reddit, Indie Hackers or Stack Exchange mentions your brand. Alerts sent via Email, Slack, RSS, API or Zapier.">
+  <link rel="shortcut icon" type="image/png" href="/static/favicon.png"/>
+
+  
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+  <link rel="stylesheet" type="text/css" href="/static/material.css">
+  <link rel="stylesheet" type="text/css" href="/static/pricing.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+  <script type="text/javascript">
+    Paddle.Setup({ vendor: 33423 });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140893745-1"></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-140893745-1');
+  </script>
+
+  <title>Keyword Mention Alerts | mentionme.app</title>
+</head>
+
+<body>
+<div class="navbar fixed-top navbar-expand-md navbar-dark">
+  <div class="container">
+    <div class="navbar-brand">
+      <img src="/static/favicon.png" width="36" height="36" alt="">
+      <b><a class="text-brand" href="/" style="padding-left: 5px">MentionMe</a></b>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/demo"><i class="far fa-eye fa-fw"></i> Demo</a></li>
+      </ul>
+
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link small" href="https://medium.com/mentionme"> BLOG</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link small" href="/#how-it-works"> HOW IT WORKS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link small" href="/#pricing"> PRICING</a>
+        </li>
+        <li class="nav-item" style="margin-left: 35px">
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/login?redirect=/setup"><i class="fas fa-sign-in-alt"></i> Sign in</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<section class="text-center anchor intro white" id="intro">
+  <div class="container vertical-center" style="height: 600px;">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="centering text-left">
+          <div class="col-md-6">
+            <h1>Real-time Social News Monitoring</h1>
+            <big>
+              Keep your finger on the pulse while remaining distraction free.
+            </big>
+            <div>
+              <br>
+              <a class="btn btn-danger mb-1 btn-lg" href="/auth/login?redirect=/setup"><i class="fab fa-google"></i> Sign In With Google</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="anchor how-it-works landing" id="how-it-works">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2>A better pattern for social news sites consumption</h2>
+        <p>
+          If you're anything like the 2.77 billion other people on earth you use social media.
+          And you've probably noticed a pattern - an honest attempt to stay up to date turns into an ugly distraction full of emotionally charged clickbait titles.
+          Judging by the recent proliferation of concepts such as Mark Mason's <a href="https://markmanson.net/attention-diet">Attention Diet</a> and
+          Cal Newport's <a href="http://www.calnewport.com/books/digital-minimalism/">Digital Minimalism</a> humanity is starting to build a social media immune system.
+          In order to benefit from sites like Reddit without all the negative side effects we must define precisely what it is we're looking for.
+          And then ignore the rest.
+        </p>
+        <p>
+          Each minute MentionMe is sifting thorugh thousands of posts and comments from different sources, giving you just the bits that you want.
+          Receive notifications about what's important live and stay distraction free from toxic headlines you'd otherwise be exposed to with traditional social media use patterns.
+        </p>
+        <p>
+          With no arbitrarily low limits and API access you're free to use MentionMe's engine to your benefit however you wish.
+          Read on to learn how MentionMe can help you optimize the time you spent online.
+        </p>
+        <blockquote class="blockquote">
+          <p class="mb-0">
+          <b>Digital Minimalism</b><br>A philosophy of technology use in which you focus your online time on a small number of carefully selected and optimized activities that strongly support things you value, and then happily miss out on everything else.
+          </p>
+          <footer class="blockquote-footer">
+            Cal Newport, author of <cite title="Digital Minimalism">Digital Minimalism</cite>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h3>Build your personal brand</h3>
+        <p>
+          Monitor mentions of your product, blog, website, email address or nickname.
+          Don't miss the opportunity to introduce yourself, thank your supporters and gather valuable user feedback when a link to your site gets posted.
+          Just a simple "Hey, author here, thanks for posting" makes a world of a difference to how users perceive you.
+          That's what <a href="https://www.google.com/search?q=%22author+here%22+hacker+news">everybody else</a> is already doing.
+        </p>
+        <blockquote class="blockquote">
+          <p class="mb-0">
+            "Personal branding is about managing your name - even if you don't own a business - in a world of misinformation, disinformation, and semi-permanent Google records. Going on a date? Chances are that your "blind" date has Googled your name. Going to a job interview? Ditto."
+          </p>
+          <footer class="blockquote-footer">
+            Tim Ferriss, author of <cite title="The 4-Hour Workweek">The 4-Hour Workweek</cite>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h3>Provide outstanding user support</h3>
+        <p>
+          Always be the first one to respond to questions, immediately after they get posted.
+          Maybe it's someone struggling with a bug in your software.
+          Maybe someone is complaining about their pains with a competitors product.
+          Or maybe someone is experiencing a problem that you know how to fix.
+          With MentionMe you can jump in on a conversation as it's happening and provide outstanding user support.
+        </p>
+        <blockquote class="blockquote">
+          <p class="mb-0">
+          "The companies that learn the quickest, win. This is partly because they do not make decisions based on assumptions and partly because they learn from their predecessors. While your competitors are debating which assumption is better than the other, you can build a competitive advantage by gathering real information from your customers."
+          </p>
+          <footer class="blockquote-footer">
+            Dan Norris <cite title="The 7 Day Startup">The 7 Day Startup</cite>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h3>Follow your niche</h3>
+        <p>
+          Suppose you want to, say, provide paid support for a little used open source tool.
+          Searching for users experiencing a problem all around the internet can be daunting.
+          With no arbitrary keyword limit MentionMe is your trusted sidekick to find leads and research new markets.
+          Set up an account and start looking for niches with an itch that only you can scratch -
+          studying user pain points has never been so convenient.
+        </p>
+        <blockquote class="blockquote">
+          <p class="mb-0">
+          "The genius of niches is they are too small for large competitors, allowing a nimble entrepreneur the breathing room to focus on an under-served audience."
+          </p>
+          <footer class="blockquote-footer">
+            Rob Walling in <cite title="Start Small, Stay Small">Start Small, Stay Small</cite>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h3>Keep track of your competition</h3>
+        <p>
+          Maybe it's your direct competition, or maybe a product in the same class as yours.
+          If you want to be as successful as they are, you have to at least do what they are doing.
+          Let your competitors acitivies be a source of your inspiration.
+          Keep your finger on the pulse!
+        </p>
+        <blockquote class="blockquote">
+          <p class="mb-0">
+            "The ability to learn faster from customers is the essential competitive advantage that startups must possess."
+          </p>
+          <footer class="blockquote-footer">
+            Eric Ries in <cite title="The Lean Startup">The Lean Startup</cite>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+    <p class="text-center">
+      <a class="btn btn-danger mb-1 btn-lg" href="/auth/login?redirect=/setup"><i class="fab fa-google"></i> Sign In With Google</a>
+      <br><big>Or <a href="/demo">see the demo</a>.</big>
+    </p>
+    
+    <hr>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2>How Does It Work?</h2>
+        <p>
+          MentionMe is composed of scanners that gather social media data and frontends that you can use to receive your notifications.
+        </p>
+        <h3>The Scanners</h3>
+        <p>
+          The main engine behind the app comprises of multiple scanners running a few times per hour.
+          The frequency is carefuly determined based on the different site API limitations
+          providing you with an optimal, as close to live as possible, alert delivery rate.
+          In case of a failure or underlying site unavailability the job will be queued and re-executed at a later time, until successful, so that you never miss a post.
+        </p>
+        <p>
+          Currently available sites include:
+        </p>
+        <ul>
+          <li><a href="https://www.reddit.com/">Reddit</a>
+          <li><a href="https://stackexchange.com/">Stack Exchange</a> (<a href="https://stackoverflow.com/">Stack Overflow</a>, <a href="https://serverfault.com/">Server Fault</a>, <a href="https://superuser.com/">Super User</a>, <a href="https://wordpress.stackexchange.com/">WordPress</a>, <a href="https://magento.stackexchange.com/">Magento</a>)
+          <li><a href="https://news.ycombinator.com/">Hacker News</a></label>
+          <li><a href="https://www.indiehackers.com/">Indie Hackers</a></label>
+          <li><a href="https://lobste.rs/">Lobste.rs</a></b>
+          <li>Discourse (<a href="https://community.hackernoon.com/">Hacker Noon Community</a>)
+        </ul>
+        <p>
+          <a href="mailto:hello@mentionme.app">Drop me a line</a> if your favourite site is not included. It's easy to add new sites, it only took me three hours to add <a href="https://www.indiehackers.com/post/5822f851e1?commentId=-LiNKViU6rb0R7Rvqr5v">Indie Hackers</a>.
+
+        </p>
+        <p>
+          All <b>items</b> (posts, comments, questions, answers) are converted to a common format, filtered through your keyword list
+          and made available to you via the different methods outlined below.
+        </p>
+
+        <h3>Notification Channels</h3>
+        <p>
+        Built with user convenience in mind, MentionMe supports a wide array of notification frontends.
+        </p>
+
+        <h3><i class="fab fa-slack"></i> Slack</h3>
+        <p>
+          Get your notifications while they're hot.
+          The <a href="https://slack.com/apps/AK2R1R4BF">Slack App</a> will send you alerts as they occur, allowing your team to react in real time.
+        </p>
+        <p>
+          <img src="/static/imgs/slack-message.png" class="mx-auto d-block"/>
+        </p>
+        <br>
+
+        <h3><i class="fas fa-envelope"></i> E-Mail and <i class="fas fa-rss"></i> RSS</h3>
+        <p>
+          Receive E-Mail reports once a day or immediately.
+          And if you're old school you'll be happy to learn we've got RSS support as well.
+          Check out the <a href="/demo">demo</a> to see the sample feed.
+        </p>
+        <p>
+          <img src="/static/imgs/rss.png" class="mx-auto d-block"/>
+        </p>
+        <br>
+
+        <h3><i class="fas fa-server"></i> API and Zapier</h3>
+        <p>
+          Are you a power user that want's to cook your own notification method?
+          Need even more automation?
+          Set up a new integration with Zapier or interface with our API directly.
+          Check out the <a href="/demo">demo</a> to see a few sample curl commands.
+        </p>
+
+        <h2>Filters</h2>
+        <p>
+          You configure MentionMe by defining filters.
+          You can see the <a href="/documentation">documentation</a> for details, but here are a few examples:
+        </p>
+        <ul>
+          <li><tt>mentionme</tt> will match <i><tt><b>mentionme</b>.app</tt></i> and <i><tt><b>MentionMe</b>.app</tt></i> but not <i><tt>mentionmeapp</tt></i>
+          <li><tt>google alerts alternative</tt> will match <i><tt>Can anyone recommend an <b>alternative</b> to <b>Google Alerts</b>?</tt></i>
+          <li><tt>`plug`</tt> will match <i><tt>un<b>plug</b></tt></i>, <i><tt><b>plug</b></tt></i> and <i><tt><b>plug</b>in</tt></i>
+          <li><tt>author:tptacek site:news.ycombinator.com security</tt> will match comments by <tt>tptacek</tt> on Hacker News that contain the word <tt>security</tt>
+        </ul>
+        <p>
+          Only pay attention to the content you value.
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2>Well, Let's Get Started!</h2>
+        <p class="text-center">
+          <a class="btn btn-danger mb-1 btn-lg" href="/auth/login?redirect=/setup"><i class="fab fa-google"></i> Sign In With Google</a>
+          <br><big>Or <a href="/demo">see the demo</a>.</big>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+
+<section class="text-center anchor pricing" id="pricing">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12" style="padding-top: 50px; padding-bottom: 100px">
+        <h2>Pricing</h2>
+        <div class="snip1404">
+          <div class="plan">
+            <header>
+              <h4 class="plan-title">Free</h4>
+              <div class="plan-cost"><span class="plan-price">&euro;0</span><span class="plan-type">/month</span></div>
+            </header>
+            <ul class="plan-features">
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i><b>1</b> filter
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i><b>5</b> daily matches
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i>Email
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i>RSS
+              <li>&nbsp;
+              <li>&nbsp;
+            </ul>
+            <div class="plan-select"><a href="/auth/login?redirect=/setup">Start Free</a></div>
+          </div>
+
+          <div class="plan">
+            <header>
+              <h4 class="plan-title">Personal</h4>
+              <div class="plan-cost"><span class="plan-price">&euro;2.49</span><span class="plan-type">/month</span></div>
+            </header>
+            <ul class="plan-features">
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i><b>3</b> filters
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i><b>15</b> daily matches
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i>Email
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i>RSS
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i>Slack
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i>API and Zapier
+            </ul>
+            <div class="plan-select"><a href="/auth/login?redirect=/setup">Start Trial</a></div>
+          </div>
+
+          <div class="plan featured">
+            <header>
+              <h4 class="plan-title">Standard</h4>
+              <div class="plan-cost"><span class="plan-price">&euro;5.19</span><span class="plan-type">/month</span></div>
+            </header>
+            <ul class="plan-features">
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i><b>10</b> filters
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i><b>50</b> daily matches
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i>Email
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i>RSS
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i>Slack
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i>API and Zapier
+            </ul>
+            <div class="plan-select"><a href="/auth/login?redirect=/setup">Start Trial</a></div>
+          </div>
+
+          <div class="plan">
+            <header>
+              <h4 class="plan-title">Professional</h4>
+              <div class="plan-cost"><span class="plan-price">&euro;15.95</span><span class="plan-type">/month</span></div>
+            </header>
+            <ul class="plan-features">
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i><b>100</b> filters
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i><b>500</b> daily matches
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i>Email
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i>RSS
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i>Slack
+              <li><i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color:white"></i>API and Zapier
+            </ul>
+            <div class="plan-select"><a href="/auth/login?redirect=/setup">Start Trial</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="text-center anchor me white" id="me">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2>About Me</h2>
+        <img src="/static/face.png"/>
+        <p class="small">
+          Michael Mazurek
+          <br>Founder
+        </p>
+        <p>
+          A life optimizing maniac. I wanted to help internet users reap the benefits of social media without being affected by its toxicity and distractions.
+          mentionme.app was born in 2019, and now it's available to you.
+          Enjoy!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-copyright text-center text-footer py-3">
+    <small style="margin-right: 5px">&copy; 2019 mentionme.app &mdash; All Rights Reserved</small>
+    <small style="margin-right: 5px">Contact: <a href="mailto:hello@mentionme.app" class="footer-email" style="padding: 0">hello@mentionme.app</a></small>
+    <a href="/terms" class="footer-link small">TERMS</a>
+  </div>
+</footer>
+</body>
+</html>
